@@ -13,7 +13,10 @@ local function unlockMuamarVehicles()
         local id = vehicleOfferRecord:GetRecordID()
         local unlockType = TweakDB:GetFlat(id .. ".unlockType")
 
-        if TDBID.ToStringDEBUG(unlockType) == "Vehicle.CourierMissions" then
+        if (
+            TDBID.ToStringDEBUG(unlockType) == "Vehicle.CourierMissions"
+            or TDBID.ToStringDEBUG(id) == "Vehicle.herrera_outlaw_courier_outro_failed_offer"
+        ) then
             local availabilityFact = vehicleOfferRecord:AvailabilityFact()
             Game.GetQuestsSystem():SetFact(availabilityFact, 1)
         end
